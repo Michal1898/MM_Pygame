@@ -1,0 +1,52 @@
+Class MasterMind je backend, který umožňuje hrát logickou hru MasterMind. V České republice je tato hra známější pod názvem Logic.
+
+
+Pravidla hry:
+Hra je pro 2 hráče. Jeden zadá na začátku tajný kód a zakryje ho. Druhý se jej snaží uhádnout. První hráč přiděluje po každém pokusu druhému hráči černé a bílé kolíčky. 
+
+Současná verze: 
+Je destička s polem pěti otvorů vedle sebe. Do nich se zastrkují barevné kolíky. K dispozici je 8 barev těchto kolíků. Barvy kolíků se mohou opakovat. Vedle je pole menších otvorů, do kterých se zastrkují černé a bílé kolíčky. Druhý hráč hádá skrytou barevnou kombinací. První hráč mu po každém jeho pokusu přidělí černé a bílé kolíčky. Černý kolíček znamená uhádnutou barvu na správné pozici. Bílý kolíček znamená uhádnutou barvu, ale na špatné pozici. Nejprve se přidělují černé kolíčky, potom bílé kolíčky. Kolíčky se přidělují zleva doprava, bez ohledu na pozici uhádnutých barev.
+Hádající hráč má obvykle k dispozici 10 pokusů.
+Cílem hádajícího hráče je uhádnout skrytou barevnou kombinaci a spotřebovat k tomu co nejméně pokusů. Hra končí, pokud hádající hráč uhádne skrytou kombinaci nebo když vyčerpá všechny pokusy. 
+
+Původní verze:
+Původně byly na destičce pouze 4 otvory. K dispozici bylo 6 barev. Ostatní pravidla jsou stejná.
+
+Stuff in if __name__ == "__main__":
+
+class MasterMind je primárně určena jako backend větších projektů. Jako takové by měla být importována. 
+Ale pro účely testování a aby bylo možné hrát hru z příkazové řádky byl vytvořen tento jednoduchý kód
+
+    attempt = 10 # počet pokusů (zde 10)
+    value = 6 # Hodnoty Digitů: 1 , 2, 3, 4, 5, 6
+    digit = 4 # počet pozic (zde 4)
+    time = 5  #Doba na rozmyšlenou (zde 5 minut)
+    the_game = MasterMind(attempt, value, digit, time)
+class MasterMind inicializace třídy MasterMind().
+
+print(repr(the_game))
+Generuje report o aktuálním stavu hry. 
+
+
+while the_game.is_running():
+  .....
+Poolování flag bitu, jestli je hra dosud aktivní
+Pokud je flag bit False, znamená to, že hra skončila. Po jejím ukončení je vygenerován report o jejím průběhu a je uložen do souboru.
+
+class MasterMind a jak se používá:
+class Attempt:
+class Attempt je součástí class MasterMind. Při každém hádání kódu je vytvořen jeden objekt třídy Attempt.
+
+def __init__(
+        self, att_no, your_code=[], white=0, black=0, duration=datetime.time(0)
+    ):
+ Při každém hádání kódu je vytvořen jeden objekt třídy Attempt. 
+Jeho atributy jsou:
+ att_no  ... Index pokusu
+ your_code ... hodnota pokusného kódu
+ white = Počet přidělených bílých tyčinek
+ white = Počet přidělených černých tyčinek
+ duration = Doba trvání pokusu.
+
+def __repr__(self):
+Vrací textový řetězec s hodnotami průběhu daného pokusu.

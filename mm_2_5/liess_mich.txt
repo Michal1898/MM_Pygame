@@ -1,0 +1,60 @@
+﻿MasterMind ist Backend-Klasse, die logische Spiel 'Master Mind' spielen ermöglich.
+
+
+Spiel Regeln:
+
+Das Spiel ist für 2 Spieler. Der Erste ist Codierer, der zweite ist der Rater. Ziel ist, den Geheimcode lösen. 
+
+Standard version: 
+Es ist eine Lochplatte mit hintereinander angeordneten fünfreihen Rundlöcher zur Aufnahme pilzförmiger Farbsteine und parallel daneben jeweils fünf kleinere Löcher in quadratischer Anordnung zur Aufnahme nagelförmiger Stifte. Es sind acht Farben von Farbsteine zur Verfügung.
+Der Codierer legt zu Beginn verdeckt einen fünfstelligen geordneten Farbcode fest, der aus acht Farben ausgewählt wird; jede Farbe kann auch mehrmals verwendet werden. Der Rater versucht, den Code herauszufinden. Dazu setzt er einen gleichartigen Farbcode als Frage; beim ersten Zug blind geraten, bei den weiteren Zügen mit Hilfe der Antworten zu den vorangegangenen Zügen. 
+Der Rater hat gewöhnlich zehn Fragen zur Verfügung.
+
+Ziel des Raters ist es, den Farbcode mit möglichst wenigen Fragen zu erraten. Der Codierer darf seine Farbreihe nicht verändern und muss zu jeder Frage die zutreffende Anzahl schwarzer und weißer Stifte setzen. Der schwarze Stift heißt richtige Farbe an richtiger Lage. Der weiße Stift heißt richtige Farbe an falscher Lage.
+Geheimcode ist für Codierer, aber nicht für Rater sichtbar.  Nach jeder Frage werden nagelförmige Stifte zugeteilt. Am Anfang werden schwarze Stifte und dann weiße Stifte zugeteilt. Die stifte werden von links nach rechts, unabhängig von Farbsteinenposition zugeteilt. Am Ende des Spieles wird Geheimcode entdeckt.
+Das Spiel setzt vor, bis Geheimcode gelöst wird oder alle Züge erschöpft werden.
+
+Originalfassung:
+Es ist eine Lochplatte mit hintereinander angeordneten Vierreihen Rundlöcher zur Aufnahme pilzförmiger Farbsteine und parallel daneben jeweils vier kleinere Löcher in quadratischer Anordnung zur Aufnahme nagelförmiger Stifte. Es sind sechs Farben von Farbsteine zur Verfügung.
+Der Rest ist gleich wie bei Standardversion.
+
+Stuff in if __name__ == "__main__":
+
+MasterMind-Klasse ist für Benutzung als Fronted für größere Projekte beurteilt. Es soll in diese Fälle importiert sein.
+Aber zum Testen und um das Spiel über die Befehlszeile spielen zu können, ist dieser einfache Code geschrieben.
+
+    attempt = 10 # du hast 10 Züge
+    value = 6 # Mögliche Werte: 1 , 2, 3, 4, 5, 6
+    digit = 4 # 4 Rundlöcher
+    time = 5  #Du hast 5 Minuten Zeit, um den Kode zu knacken
+    the_game = MasterMind(attempt, value, digit, time)
+Klasse MasterMind initiate.
+
+print(repr(the_game))
+Nachricht über aktuellen Stand des Spiel generiert. 
+
+
+while the_game.is_running():
+  .....
+Testing von Flagbit, ob das Spiel noch aktiv ist.
+Bis Flagbit ist aktive, du kannst Geheimcode tippen
+Wenn dieses Bit aus ist, das Spiel wurde schon beendet.
+
+Wenn das Spiel beendet wird, Nachricht über der Verlauf des Spiel wird generiert und nach Text-File geschrieben.
+
+Klasse MasterMind und wie man benutzt:
+class Attempt:
+Klasse Attempt ist der Teil der Klasse MasterMind. Für jede Zug wird ein Attempt-Klasse Objekt initialisiert.
+
+def __init__(
+        self, att_no, your_code=[], white=0, black=0, duration=datetime.time(0)
+    ):
+Für neuer Zug wird ein neues Objekt initialisiert. Seine Attribute sind:
+ att_no  ... Index des Züges
+ your_code ... Codewert für den Zug
+ white = Nummer von weißen Stiften
+ white = Nummer von schwarten Stiften
+ duration = Wie lange der Zug dauerte.
+
+def __repr__(self):
+Textkette mit Werten für angehörige Versuch wird zurückgegeben.

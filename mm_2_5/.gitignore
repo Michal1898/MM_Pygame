@@ -1,0 +1,22 @@
+__pycache__
+*.py[cod]
+*$py.class
+
+
+# Log files
+pip-log.txt
+pip-delete-this-directory.txt
+*.log
+
+data/mm_games.txt
+
+# Environment
+.env
+.venv
+env/
+venv/
+ENV/
+
+# If you are using PyCharm # 
+.idea/
+
