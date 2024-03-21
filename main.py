@@ -37,7 +37,7 @@ def draw_text(text, font, text_color, x, y):
 run = True
 while run and the_game.is_running():
 	screen.fill(bg_color)
-
+#time bar
 	time_for_game=the_game.return_time_for_game()
 	#print(time_for_game.total_seconds())
 
@@ -54,7 +54,7 @@ while run and the_game.is_running():
 		time_rest_text = f'Time left:{time_rest_m:02d}:{time_rest_sec:02d}'
 	print(time_rest_text)
 
-	draw_text(time_rest_text, text_font, 0x000000, 300,210)
+
 
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
@@ -74,15 +74,23 @@ while run and the_game.is_running():
 		time_color = 0xff4500
 
 	print(ratio, time_color, the_game.check_time_to_left())
-	pygame.draw.line(screen, (255, 255, 255), (100, 200), (100, 300))
-	pygame.draw.line(screen, (255, 255, 255), (200, 200), (200, 300))
-	pygame.draw.line(screen, (255, 255, 255), (0, 200), (screen_width, 200))
-	pygame.draw.line(screen, (255, 255, 255), (0, 300), (screen_width, 300))
 
-	screen.blit(clock_img, (100, 200))
-	pygame.draw.rect(screen, 0xffffe0	, (250, 250, 300, 40), width=3,border_radius=7)
-	pygame.draw.rect(screen, time_color, (250, 250, 300 * ratio, 40), width=0, border_radius=7)
+	draw_text(time_rest_text, text_font, 0x000000, 300,810)
+	pygame.draw.line(screen, (255, 255, 255), (100, 800), (100, 900))
+	pygame.draw.line(screen, (255, 255, 255), (200, 800), (200, 900))
+	pygame.draw.line(screen, (255, 255, 255), (0, 800), (screen_width, 800))
+	pygame.draw.line(screen, (255, 255, 255), (0, 900), (screen_width, 900))
 
+	screen.blit(clock_img, (100, 800))
+	pygame.draw.rect(screen, 0xffffe0	, (250, 850, 300, 40), width=3,border_radius=7)
+	pygame.draw.rect(screen, time_color, (250, 850, 300 * ratio, 40), width=0, border_radius=7)
+
+# active attempt
+	att_no = the_game.active_attempt()
+	active_att = f'Attempt number {att_no +1}:'
+
+	pygame.draw.line(screen, (255, 255, 255), (0, 600), (screen_width, 600))
+	draw_text(active_att, text_font, 0x000000, 400,610)
 
 	pygame.display.update()
 
