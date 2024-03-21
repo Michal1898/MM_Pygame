@@ -59,9 +59,9 @@ class MasterMind:
                 error_message = "Count of options out of range!"
             elif digit < self.limits("DIGIT_MIN") or digit > self.limits("DIGIT_MAX"):
                 error_message = "Count of digits out of range!"
-
-            elif time_limit < self.limits("TIME_MIN") or time_limit > self.limits("TIME_MAX"):
-                error_message = "Time limit out of range!"
+            #only for test! Remove, when completed!
+            # elif time_limit < self.limits("TIME_MIN") or time_limit > self.limits("TIME_MAX"):
+            #     error_message = "Time limit out of range!"
         else:
             error_message = "Parameters must be integer!"
 
